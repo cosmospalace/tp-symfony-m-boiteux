@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des pilotes{% endblock %}
+
+{% block body %}
+
+ {# {% include "partials/slider.html.twig" %} #}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+             <h1 class="text-uppercase text-center mt-3 mb-3">Liste des pilotes</h1>
+
+                <table class="table">
+                    <thead>
+                        <th># Pilote</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>eMail</th>
+                        <th>Qualifications</th>
+                        <th>Actions</th>
+                    </thead>
+
+                    <tbody>
+                        {% for pilote in pilotes %}
+
+                        <tr class"vertical-align">
+                            <td>{{ pilote.id }}</td>
+                            <td>{{ pilote.nom }}</td>
+                            <td>{{ pilote.prenom }}</td>
+                            <td>
+                                <a href="mailto:{{ pilote.email }}">{{ pilote.email }}</a>
+                            </td>
+                            <td>{{ pilote.pilote.libelle }}</td>
+                            <td>
+                                <a href="{{path('show_pilote',{'id': pilote.id})}}" class="btn btn-primary"><i class="bi bi-person-circle"></i> Détail</a>
+                                <a href="{{path('edit_pilote',{'id': pilote.id})}}" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Modifier</a>
+                                <a href="{{path('delete_pilote',{'id': pilote.id})}}" class="btn btn-danger"><i class="bi bi-x-circle"></i> Supprimer</a>
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                            <tr>
+                                <td colspan="6">Aucun pilote trouvé</td>
+                            </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{path('create_pilote')}}" class="btn btn-primary text-uppercase w-100">Ajouter un pilote</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

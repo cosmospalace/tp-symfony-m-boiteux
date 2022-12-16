@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ titre }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+
+            <?php dd($form); ?>
+
+            <h1 class="text-uppercase text-center mt-3 mb-3"> {{ titre }}</h1>
+
+                {{ form_start(formulaire, {})}}
+
+                <div class="row justify-content-center mb-3 mt-3 d-flex">
+                    <div class="col-12">
+                    {{ form_label(formulaire.nom)}}
+                    <br>
+                    {{ form_widget(formulaire.nom)}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-3 mt-3 d-flex">
+                    <div class="col-12">
+                        {{ form_label(formulaire.prenom)}}
+                        <br>
+                        {{ form_widget(formulaire.prenom)}}
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-3 mt-3 d-flex">
+                    <div class="col-12">
+                        {{ form_label(formulaire.email)}}
+                        <br>
+                        {{ form_widget(formulaire.email)}}
+                    </div>
+                </div>                  
+
+                <div class="row justify-content-center mb-3 mt-3 d-flex">
+                    <div class="col-12">
+                        {{ form_label(formulaire.pilote)}}
+                        <br>
+                        {{ form_widget(formulaire.pilote)}}
+                    </div>
+                </div>                  
+
+
+                <div class="row justify-content-center mb-3 mt-3 d-flex">
+                    <div class="col-12">
+                        <button class="btn btn-success">ACCEPTER</button>
+                    </div>
+                </div>            
+               
+                   
+                
+                {{ form_end(formulaire)}}
+
+
+            <a href="{{path('app_pilote')}}" class="btn btn-primary text-uppercase w-100">Retour à la liste des pilotes</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

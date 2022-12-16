@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des qualifications{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+
+             <h1 class="text-uppercase text-center mt-3 mb-3">Liste des qualifications</h1>
+
+                <table class="table">
+                    <thead>
+                        <th># Qualif</th>
+                        <th>Code</th>
+                        <th>Libellé</th>
+                        <th>Actions</th>
+                    </thead>
+
+                    <tbody>
+                        {% for qualification in qualifications %}
+
+                        <tr class"vertical-align">
+                            <td>{{ qualification.id }}</td>
+                            <td>{{ qualification.code }}</td>
+                            <td>{{ qualification.libelle }}</td>
+                            <td class="text-right">
+                                <a href="{{path('show_qualification',{'id': qualification.id})}}" class="btn btn-primary"><i class="bi bi-person-circle"></i> Détail</a>
+                                <a href="{{path('edit_qualification',{'id': qualification.id})}}" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Modifier</a>
+                                <a href="{{path('delete_qualification',{'id': qualification.id})}}" class="btn btn-danger"><i class="bi bi-x-circle"></i> Supprimer</a>
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                            <tr>
+                                <td colspan="6">Aucune qualification trouvée</td>
+                            </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{path('create_qualification')}}" class="btn btn-primary text-uppercase w-100">Ajouter une qualification</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

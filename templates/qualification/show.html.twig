@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail qualification{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+
+            <h1 class="text-uppercase text-center mt-3 mb-3">Détail qualification</h1>
+
+                <p>Code :    {{qualification.code}}</p>    
+                <p>Libellé : {{qualification.libelle}}</p>    
+
+            <a href="{{path('app_qualification')}}" class="btn btn-primary text-uppercase w-100">Retour à la liste</a>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
